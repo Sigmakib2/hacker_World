@@ -1,11 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    h3,
+    h1,
+    h5,
+    h6,
+    p,
+    text,
+    b {
+        color: greenyellow;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: black;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Button used to open the chat form - fixed at the bottom of the page */
+    .open-button {
+        background-color: rgb(0, 0, 0);
+        border-radius: 10px;
+        color: green;
+        border-color: green;
+        padding: 16px 20px;
+
+        cursor: pointer;
+        opacity: 0.8;
+        position: fixed;
+        bottom: 23px;
+        right: 28px;
+        width: 280px;
+    }
+
+    /* The popup chat - hidden by default */
+    .chat-popup {
+        display: none;
+
+        position: fixed;
+        bottom: 0;
+        right: 15px;
+        border: 3px solid green;
+        z-index: 9;
+    }
+
+    /* Add styles to the form container */
+    .form-container {
+        max-width: 300px;
+        padding: 10px;
+        background-color: rgb(0, 0, 0);
+    }
+
+    /* Full-width textarea */
+    .form-container textarea {
+
+        padding: 5px;
+        margin: 5px 0 22px 0;
+        border-color: green;
+        background: #000000;
+        resize: none;
+        min-height: 12px;
+    }
+
+    /* When the textarea gets focus, do something */
+    .form-container textarea:focus {
+        background-color: rgb(0, 0, 0);
+        color: green;
+        outline: green;
+    }
+
+    /* Set a style for the submit/send button */
+    .form-container .btn {
+        background-color: #000000;
+        color: green;
+        padding: 10px 15px;
+        border-color: green;
+        cursor: pointer;
+        text-align: center;
+        width: 50%;
+        margin-bottom: 10px;
+        opacity: 0.8;
+    }
+
+    /* Add a red background color to the cancel button */
+    .form-container .cancel {
+        background-color: rgb(0, 0, 0);
+    }
+
+    /* Add some hover effects to buttons */
+    .form-container .btn:hover,
+    .open-button:hover {
+        opacity: 1;
+    }
+
+    /*animation*/
+    .loader {
+        border: 20px solid yellowgreen;
+        border-radius: 80%;
+        border-top: 20px solid black;
+        border-bottom: 20px solid black;
+        width: 120px;
+        margin: auto;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /*animation finished*/
+
+    .textmes {
+        border-color: green;
+        width: 95%;
+        color: red;
+    }
+</style>
+
 <body>
-    <p>Hello</p>
+    <script src="level1.js"></script>
+    <button class="open-button" onclick="openForm()">Message(2)</button>
+    <header>
+        <div style="text-align: center;">
+            <h1>Dashboard</h1>
+        </div>
+    </header>
+
+    <div class="loader"></div>
+
+    <div class="chat-popup" id="myForm">
+        <form class="form-container">
+            <h3>Dr. Hong</h3><a href="profile">
+                <h6>Visite profile of Dr. Hong</h6>
+            </a>
+
+            <label for="msg"><b>Message:</b></label>
+            <p class="textmes">Hello, anyone there? I need help.
+                They are going to attack.
+                We have to stop them.</p>
+            <p class="textmes">I have posted a project link on my profile yesterday.
+                Go there and take action to protect the world. Maybe this is my last day on earth.
+            </p>
+            <textarea placeholder="Type message...."></textarea>
+            <p id="demo"></p>
+            <button class="btn" onclick="sendit()">Send</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
 </body>
+
 </html>
